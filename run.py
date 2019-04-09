@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
+from app import api_bp
 
 def create_app(config_filename):
     app = Flask(__name__)
@@ -7,9 +8,8 @@ def create_app(config_filename):
     CORS(app)
     app.config.from_object(config_filename)
 
-    @app.route('/', methods=['GET'])
-    def index():
-        return 'Ok'
+
+    app.register_blueprint(api_bp, url_prefix='/')
 
     return app
 
