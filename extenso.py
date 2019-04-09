@@ -53,7 +53,7 @@ class extenso(Resource):
         if num[0] == "-": 
           menos_string = "menos " 
           num = num.lstrip('-')
-
+        if not(num.isdigit()):  return {"error": "O valor entrado nao e um numero valido"}, 500
         if(num == "0"): return {"extenso": self.palavras_extenso[0][0]}, 200
 
         num = num.lstrip('0')
